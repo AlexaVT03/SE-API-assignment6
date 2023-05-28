@@ -1,7 +1,5 @@
 package se.assignment6.api6.APIBookInventory;
 
-import se.assignment6.api6.APIBookCatalog.Book;
-
 public class Inventory {
     
     private String id;

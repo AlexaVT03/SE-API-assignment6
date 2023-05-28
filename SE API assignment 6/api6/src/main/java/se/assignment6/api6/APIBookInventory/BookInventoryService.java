@@ -25,25 +25,52 @@ public class BookInventoryService {
 
     //GET specific
     public Inventory getInventory(String id) {
-        return null;
+        return inventory.values().stream().filter(i -> i.getId().equals(id)).findFirst().orElse(null);
     }
     
     //GET all
     public List<Inventory> getAllInventory() {
-        return null;
+        sumOfAllInventory = 0;
+
+        for (Inventory item : inventory.values()) {
+            sumOfAllInventory += item.getQuantity();
+        }
+
+        System.out.println("Sum of all Inventory: " + sumOfAllInventory);
+        return new ArrayList<>(inventory.values());
     }
 
     //POST
     public String createInventory(Inventory inventoryEntry) {
-        return null;
+        inventory.put(inventoryEntry.getId(), inventoryEntry);
+        sumOfAllInventory += inventoryEntry.getQuantity();
+        return "Inventory created successfully";
     }
 
     //PUT
     public void updateInventory (String id, int newQuantity) {
+        if (inventory.containsKey(id)) {
+            Inventory item = inventory.get(id);
+            item.setQuantity(newQuantity);
+            inventory.put(id, item);
+        }
+        // Inventory existingInventory = inventory.get(id);
+        // if (existingInventory != null) {
+        //     existingInventory.setQuantity(newQuantity);
+        // }
     }
 
     //DELETE
     public String deleteInventory(String id) {
-        return null;
+        // inventory.values().removeIf(i -> i.getId().equals(id));
+        // sumOfAllInventory -= inventory.get(id).getQuantity();
+        // return "Inventory deleted successfully";
+        if (inventory.containsKey(id)) {
+            inventory.remove(id);
+            return "Inventory deleted successfully";
+        }
+        //updates total inventory
+        sumOfAllInventory += inventory.get(id).getQuantity();
+        return "Inventory not found";
     }
 }

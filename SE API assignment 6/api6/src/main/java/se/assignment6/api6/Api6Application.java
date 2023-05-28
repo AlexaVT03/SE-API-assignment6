@@ -1,10 +1,13 @@
 package se.assignment6.api6;
 
+
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import jakarta.servlet.http.HttpServletRequest;
-
-import java.util.Collection;
-import java.util.Collections;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
 
 /**
@@ -35,11 +35,9 @@ import java.util.Enumeration;
 @SpringBootApplication
 public class Api6Application {
     public static void main(String[] args) {
-
-        int port = 3001;
-
-        SpringApplication.run(Api6Application.class, "--server.port=" + port);
-       // SpringApplication.run(Api6Application.class, args);
+        SpringApplication.run(Api6Application.class, args);
+        // int port = 3002;
+        // SpringApplication.run(Api6Application.class, "--server.port=" + port);
     }
 }
 

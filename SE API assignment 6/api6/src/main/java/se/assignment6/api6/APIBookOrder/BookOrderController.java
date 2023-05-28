@@ -19,26 +19,26 @@ public class BookOrderController {
    
     //GET all orders
     @RequestMapping("/orders")
-    public List<Order> getAllInventory () {
+    public List<Order> getAllOrders () {
         return bookOrderService.getAllOrders();
     }
 
     //GET a order
     // put string id in place of {id}
     @RequestMapping("/orders/{id}")
-    public Order getInventory(@PathVariable String id) {
+    public Order getOrder(@PathVariable String id) {
         return bookOrderService.getOrder(id);
     }
     
     //POST
     @RequestMapping(method=RequestMethod.POST, value="/orders")
-    public void addInventory(@RequestBody Order order) {
+    public void addOrder(@RequestBody Order order) {
         bookOrderService.placeOrder(order);
     }
 
     //DELETE
     @RequestMapping(method=RequestMethod.DELETE, value="/orders/{id}")
-    public void deleteInventory(@PathVariable String id) {
+    public void deleteOrder(@PathVariable String id) {
         bookOrderService.deleteOrder(id);
     }
 

@@ -1,6 +1,7 @@
 package se.assignment6.api6.APIBookInventory;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +35,12 @@ public class BookInventoryController {
     @RequestMapping(method=RequestMethod.POST, value="/inventory")
     public void addInventory(@RequestBody Inventory inventory) {
         bookInventoryService.createInventory(inventory);
+    }
+
+    //UPDATE
+    @RequestMapping(method=RequestMethod.PUT, value="/inventory/{id}/{newQuantity}")
+    public void updateInventory(@PathVariable String id, @PathVariable int newQuantity) {
+        bookInventoryService.updateInventory(id, newQuantity);
     }
 
     //DELETE
